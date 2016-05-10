@@ -5,9 +5,9 @@ defaults
   mode http
   retries 3
   option redispatch
-  timeout client 60s
-  timeout server 60s
-  timeout connect 60s
+  timeout client 120s
+  timeout server 120s
+  timeout connect 120s
 
 frontend forwarder
   bind *:%FWDPORT%
