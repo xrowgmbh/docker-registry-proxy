@@ -12,10 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-FROM haproxy:1.5-alpine
-MAINTAINER Muhammed Uluyol <uluyol@google.com>
+FROM centos:7
+MAINTAINER xrow
 
-RUN apk add -y dnsutils
+RUN yum install -y bind-utils haproxy
 
 ADD proxy.conf.insecure.in /proxy.conf.in
 ADD run_proxy.sh /usr/bin/run_proxy
