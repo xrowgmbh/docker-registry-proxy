@@ -12,15 +12,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-FROM haproxy:1.5-alpine
-MAINTAINER Muhammed Uluyol <uluyol@google.com>
+.PHONY: build push vet test clean
 
-RUN apt-get update && apt-get install -y dnsutils
+TAG = 0.3
+REPO = gcr.io/google_containers/kube-registry-proxy
 
-ADD proxy.conf.insecure.in /proxy.conf.in
-ADD run_proxy.sh /usr/bin/run_proxy
+build:
+	docker build -t $(REPO):$(TAG) .
 
-RUN chown root:users /usr/bin/run_proxy
-RUN chmod 755 /usr/bin/run_proxy
-
-CMD ["/usr/bin/run_proxy"]
+push:
+	gcloud docker push $(REPO):$(TAG)
