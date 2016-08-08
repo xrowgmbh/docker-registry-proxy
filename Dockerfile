@@ -15,7 +15,7 @@
 FROM haproxy:1.5-alpine
 MAINTAINER Muhammed Uluyol <uluyol@google.com>
 
-RUN apt-get update && apt-get install -y dnsutils
+RUN apk add -y dnsutils
 
 ADD proxy.conf.insecure.in /proxy.conf.in
 ADD run_proxy.sh /usr/bin/run_proxy
