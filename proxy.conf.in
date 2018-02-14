@@ -15,3 +15,4 @@ frontend forwarder
 
 backend registry
   server kube-registry %HOST%:%PORT%
+  http-request replace-value Host ^(.*):.*$ \1\:%PORT%
